@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon site personnel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Ali ASLI</h1>
+    <p>Élève ingenieur en deuxieme année cycle preparatoire | Passionné par l'analyse des données,l'inteligence artificielle et le developpement web </p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#about">Profil </a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="about">
+    <h2>Profil :</h2>
+    <p>
+        Je suis passionné par l’informatique, le développement web et l anlayse des données . J’aime contribuer a des projets innovants et me specialiser en l intelligence artificielle et l anlayse des données (data analyse).
+        je cherche une alternance de 3 ans a partir de septembre 2026 dans le domaine de l'IA et l'analyse des données.
+    </p>
+    <div class="cv-container">
+        <a href="cv alternance.pdf" download="cv alternance.pdf" class="btn-cv">
+            📄 Télécharger mon CV
+        </a>
+    </div>
+</section>
+
+<section id="skills">
+    <h2>Compétences :</h2>
+    <ul class="skills-list">
+        <li>HTML / CSS</li>
+        <li>JavaScript</li>
+        <li>SQL / MySQL</li>
+        <li>Réseaux & Systèmes</li>
+        <li>travail en autonomie</li>
+        <li>travail en équipe</li>
+        <li>PHP</li>
+        <li>python</li>
+        <li>C / C++</li>
+        <li>Microsoft Excel</li>
+        <li>Power Bi</li>
+        <li>Angular</li>
+        <li>Java Spring Boot</li>
+        <li>GraphQl</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h2>Projets : </h2>
+    <div class="project">
+        <h3>Projet Réseau</h3>
+        <p><li>projet universitaire
+Conçu et déployé des architectures réseau pour ESN eXia, Bibliothèque, Engie et Digiplex, incluant adressage IP, VLANs, VTP, routage inter-VLAN, EtherChannel, DHCP, WiFi sécurisé, serveurs DNS/FTP et optimisations pour accès web.</li></p>
+    </div>
+    
+<div class="project">
+        <h3>Site Web Personnel</h3>
+        <p><li>Création d'un site web personnel pour présenter mes compétences, projets et expériences, en utilisant HTML, CSS .</li></p>
+</div>
+<div class="project">
+        <h3>Projet systeme embarqué</h3>
+        <p>projet universitaire 
+<li>Conception d un prototype d’une station météo embarquée (Arduino, capteurs, RTC, SD). Développement du programme, démonstration fonctionnelle et rédaction de la documentation technique/utilisateur.</li> </p>
+        <p>
+</div>
+<div class="project">
+<h3>stage developpement web  chez GE vernova </h3>
+    <h3>avril 2026 - juin 2026 </h3>
+<li>Travailler sur le developpement d une application web (front end , back end)</li></p>
+    </div>
+    </div>
+</section>
+</div>
+
+<section id="contact">
+    <h2>Contact : </h2>
+    <p>Email : <a href="ali.asli@viacesi.fr">ali.asli@viacesi.fr</a></p>
+    <p>LinkedIn : <a href="https://www.linkedin.com/in/ali-asli-3777b5331/">https://www.linkedin.com/in/ali-asli-3777b5331/</a></p><br>                    
+    <img src="cesi_logo.png">
+</section>
+<footer>
+    <p>© 2026 - ASLI Ali </p>
+</footer>
+    <script>
+// ====================================
+// 1. NAVIGATION SMOOTH SCROLL & EFFET OMBRE
+// ====================================
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+    // Ajoute une ombre sous le menu quand on descend
+    if (window.scrollY > 50) {
+        nav.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+        nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)'; // Légèrement transparent
+    } else {
+        nav.style.boxShadow = 'none';
+        nav.style.backgroundColor = 'transparent';
+    }
+});
+
+document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Ferme le menu mobile si on clique sur un lien
+            nav.classList.remove('active');
+        }
+    });
+});
+
+// ====================================
+// 2. ANIMATION AU SCROLL (Fade-in)
+// ====================================
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target); // On arrête d'observer une fois affiché
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('section').forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(30px)';
+    section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+    observer.observe(section);
+});
+
+// ====================================
+// 3. BADGES POUR LES COMPÉTENCES (Style moderne)
+// ====================================
+const skillsList = document.querySelector('.skills-list');
+if (skillsList) {
+    skillsList.style.display = 'flex';
+    skillsList.style.flexWrap = 'wrap';
+    skillsList.style.gap = '10px';
+    skillsList.style.padding = '0';
+    
+    skillsList.querySelectorAll('li').forEach((skill, index) => {
+        // Application du style badge directement via JS
+        skill.className = 'skill-badge';
+        skill.style.animation = `popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards`;
+        skill.style.animationDelay = `${index * 0.15}s`;
+    });
+}
+
+// ====================================
+// 4. MENU HAMBURGER (pour mobile)
+// ====================================
+function createMobileMenu() {
+    const nav = document.querySelector('nav');
+    const menuBtn = document.createElement('button');
+    menuBtn.className = 'menu-toggle';
+    menuBtn.innerHTML = '☰';
+    menuBtn.style.cssText = `
+        display: none; background: #3498db; color: white;
+        border: none; padding: 10px 15px; font-size: 24px;
+        cursor: pointer; position: fixed; top: 15px; right: 15px;
+        z-index: 1000; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    `;
+    nav.parentElement.insertBefore(menuBtn, nav);
+    
+    menuBtn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+}
+createMobileMenu();
+
+// ====================================
+// 5. BOUTON "RETOUR EN HAUT"
+// ====================================
+const scrollBtn = document.createElement('button');
+scrollBtn.innerHTML = '↑';
+scrollBtn.id = 'scroll-top';
+scrollBtn.style.cssText = `
+    position: fixed; bottom: 30px; right: 30px;
+    background: #3498db; color: white; border: none;
+    width: 50px; height: 50px; border-radius: 50%;
+    font-size: 24px; font-weight: bold; cursor: pointer;
+    opacity: 0; pointer-events: none; z-index: 999;
+    transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+`;
+
+// Effet hover du bouton
+scrollBtn.onmouseover = () => { scrollBtn.style.background = '#2980b9'; scrollBtn.style.transform = 'translateY(-3px)'; };
+scrollBtn.onmouseout = () => { scrollBtn.style.background = '#3498db'; scrollBtn.style.transform = 'translateY(0)'; };
+
+document.body.appendChild(scrollBtn);
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollBtn.style.opacity = '1';
+        scrollBtn.style.pointerEvents = 'auto';
+    } else {
+        scrollBtn.style.opacity = '0';
+        scrollBtn.style.pointerEvents = 'none';
+    }
+});
+
+scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ====================================
+// 6. EFFET DE TYPING AVEC CURSEUR
+// ====================================
+function typeEffect(element, text, speed = 60) {
+    element.innerHTML = '<span class="typed-text"></span><span class="cursor">|</span>';
+    const textSpan = element.querySelector('.typed-text');
+    let i = 0;
+    
+    const type = () => {
+        if (i < text.length) {
+            textSpan.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    };
+    setTimeout(type, 500); // Petit délai avant de commencer à écrire
+}
+
+const headerH1 = document.querySelector('header h1');
+if (headerH1) {
+    const originalText = headerH1.textContent;
+    typeEffect(headerH1, originalText, 80);
+}
+
+// ====================================
+// 7. AJOUTER DES STYLES CSS VIA JS
+// ====================================
+if (!document.querySelector('#js-styles')) {
+    const style = document.createElement('style');
+    style.id = 'js-styles';
+    style.textContent = `
+        /* Curseur clignotant */
+        .cursor { display: inline-block; width: 3px; background-color: transparent; animation: blink 1s infinite; margin-left: 2px; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Animation des compétences */
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.5) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        /* Design des badges de compétences */
+        .skill-badge {
+            list-style: none;
+            background: #eef2f5;
+            color: #2c3e50;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid #dce4ec;
+            opacity: 0; /* Caché par défaut pour l'animation */
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .skill-badge:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Amélioration des cartes projets */
+        .project {
+            padding: 20px;
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid #eee;
+            margin-bottom: 20px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            z-index: 1;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: #3498db;
+            z-index: 2;
+        }
+
+        /* Styles Mobile Menu */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block !important; }
+            nav { position: fixed; top: 0; left: -100%; width: 250px; height: 100vh; background: #2c3e50; transition: 0.3s; padding-top: 60px; z-index: 998; }
+            nav.active { left: 0; box-shadow: 2px 0 10px rgba(0,0,0,0.2); }
+            nav ul { flex-direction: column; }
+            nav li a { color: white; display: block; padding: 15px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        }
+    `;
+    document.head.appendChild(style);
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
